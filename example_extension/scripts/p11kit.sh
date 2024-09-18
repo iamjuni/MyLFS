@@ -15,7 +15,7 @@ cd p11-build
 
 meson --prefix=/usr \
       --buildtype=release \
-      -Dtrust_paths=/etc/pki/anchors
+      -D trust_paths=/etc/pki/anchors
 
 ninja
 
