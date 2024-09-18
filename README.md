@@ -5,6 +5,10 @@ Pronounce it in whatever way seems best to you.
 
 If you don't know what this is, or haven't built Linux From Scratch on your own before, you should go through the LFS [book](https://linuxfromscratch.org) before using this script.
 
+# Roadmap
+* Add support for the lfs 12.2 book
+* Clean up the source code and modularise it more
+
 ## How To Use
 Basically, just run `sudo ./mylfs.sh --build-all` and then stare at your terminal for several hours. Maybe meditate on life or something while you wait. Or maybe clean your room or do your dishes finally. I don't know. Do whatever you want. Maybe by the end of the script, you'll realize why you love linux so much: you love it because it is *hard*. Just like going to the moon, god dammit.
 
