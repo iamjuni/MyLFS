@@ -19,8 +19,9 @@ make install
 
 rm -rf docs/examples/.deps
 
-find docs \( -name Makefile\* -o -name \*.1 -o -name \*.3 \) -exec rm {} \;
+find docs \( -name Makefile\* -o  \
+             -name \*.1       -o  \
+             -name \*.3       -o  \
+             -name CMakeLists.txt \) -delete
 
-install -d -m755 /usr/share/doc/curl-7.81.0
-cp -R docs/*     /usr/share/doc/curl-7.81.0
-
+cp -v -R docs -T /usr/share/doc/curl-8.9.1
