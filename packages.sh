@@ -1,7 +1,7 @@
-export PKG_ACL=https://download.savannah.gnu.org/releases/acl/acl-2.3.1.tar.xz
-export PKG_ATTR=https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.gz
-export PKG_AUTOCONF=https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz
-export PKG_AUTOMAKE=https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.xz
+export PKG_ACL=https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz
+export PKG_ATTR=https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz
+export PKG_AUTOCONF=https://ftp.gnu.org/gnu/autoconf/autoconf-2.72.tar.xz
+export PKG_AUTOMAKE=https://ftp.gnu.org/gnu/automake/automake-1.17.tar.xz
 export PKG_BASH=https://ftp.gnu.org/gnu/bash/bash-5.1.16.tar.gz
 export PKG_BC=https://github.com/gavinhoward/bc/releases/download/6.0.1/bc-6.0.1.tar.xz
 export PKG_BINUTILS=https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
