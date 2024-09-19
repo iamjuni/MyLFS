@@ -4,8 +4,8 @@
 
 FULLPATH=$(cd $(dirname $0) && pwd)
 
-export LFS_VERSION=11.2
-export KERNELVERS=5.19.2
+export LFS_VERSION=12.2
+export KERNELVERS=6.10.5
 export PACKAGE_LIST=$FULLPATH/packages.sh
 export PACKAGE_DIR=$FULLPATH/packages
 export LOG_DIR=$FULLPATH/logs
