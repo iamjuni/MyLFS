@@ -102,14 +102,14 @@ function perl_vers {
 
 function check_dependencies {
     check_dependency bash        3.2
-    check_dependency ld          2.13.1 2.38
+    check_dependency ld          2.13.1 2.43.1
     check_dependency bison       2.7
-    check_dependency chown       6.9
+    check_dependency chown       8.1
     check_dependency diff        2.8.1
     check_dependency find        4.2.31
     check_dependency gawk        4.0.1
-    check_dependency gcc         4.8 12.2.0
-    check_dependency g++         4.8 12.2.0
+    check_dependency gcc         5.2 14.2.0
+    check_dependency g++         5.2 14.2.0
     check_dependency grep        2.5.1a
     check_dependency gzip        1.3.12
     check_dependency m4          1.4.10
@@ -118,9 +118,9 @@ function check_dependencies {
     check_dependency python3     3.4
     check_dependency sed         4.1.5
     check_dependency tar         1.22
-    check_dependency makeinfo    4.7
+    check_dependency makeinfo    5.0
     check_dependency xz          5.0.0
-    check_dependency kernel_vers 3.2
+    check_dependency kernel_vers 4.19
     check_dependency perl_vers   5.8.8
 
     # check that yacc is a link to bison
