@@ -11,7 +11,7 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 
 ## How to install
 ```
-git clone https://github.com/krglaws/MyLFS.git
+git clone https://github.com/TheKingKerellos/MyLFS.git
 ```
 Due to github making .sh files unexecutable after making changes to it, after pulling the repository and running ./mylfs.sh (or any other .sh file) it will return;
 ```
