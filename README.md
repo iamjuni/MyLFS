@@ -9,6 +9,21 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 * Add support for the lfs 12.2 book
 * Clean up the source code and modularise it more
 
+## How to install
+```
+git clone https://github.com/krglaws/MyLFS.git
+```
+Due to github making .sh files unexecutable after making changes to it, after pulling the repository and running ./mylfs.sh (or any other .sh file) it will return;
+```
+root@root-debian:~/MyLFS$ sudo ./mylfs.sh 
+sudo: ./mylfs.sh: command not found
+```
+Which is why it is crucial to run:
+```
+find MyLFS/ -type f -name "*.sh" -exec chmod +x {} \;
+```
+
+
 ## How To Use
 Basically, just run `sudo ./mylfs.sh --build-all` and then stare at your terminal for several hours. Maybe meditate on life or something while you wait. Or maybe clean your room or do your dishes finally. I don't know. Do whatever you want. Maybe by the end of the script, you'll realize why you love linux so much: you love it because it is *hard*. Just like going to the moon, god dammit.
 
