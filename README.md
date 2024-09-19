@@ -20,7 +20,8 @@ sudo: ./mylfs.sh: command not found
 ```
 Which is why it is crucial to run:
 ```
-find MyLFS/ -type f -name "*.sh" -exec chmod +x {} \;
+cd MyLFS/
+chmod +x mylfs.sh runqemu.sh
 ```
 
 
