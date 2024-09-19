@@ -185,38 +185,40 @@ function init_image {
 
     $VERBOSE && set -x
 
-    # create image file
+    # Create image file
     fallocate -l$LFS_IMG_SIZE $LFS_IMG
 
-    # attach loop device
-    export LOOP=$(losetup -f) # export for grub.sh
+    # Attach loop device
+    export LOOP=$(losetup -f) # Export for grub.sh
     local LOOP_P1=${LOOP}p1
     losetup $LOOP $LFS_IMG
 
-    # partition the device.
-    # remove spaces and comments from instructions
+    # Partition the device
+    # Remove spaces and comments from instructions
     FDISK_INSTR=$(echo "$FDISK_INSTR" | sed 's/ *#.*//')
 
-    # fdisk fails to get kernel to re-read the partition table
-    # so ignore non-zero exit code, and manually re-read
+    # Use fdisk and handle errors
     trap - ERR
     set +e
     echo "$FDISK_INSTR" | fdisk $LOOP &> /dev/null
     set -e
     trap "echo 'init failed.' && unmount_image && exit 1" ERR
 
-    # reattach loop device to re-read partition table
+    # Reattach loop device to re-read partition table
     losetup -d $LOOP
+    export LOOP=$(losetup -f) # Reassign LOOP if necessary
+    local LOOP_P1=${LOOP}p1
     losetup -P $LOOP $LFS_IMG
 
-    # exporting for grub.cfg
+    # Export PARTUUID for GRUB configuration
     export LFSPARTUUID="$(lsblk -o PARTUUID $LOOP_P1 | tail -1)"
     while [ -z "$LFSPARTUUID" ]
     do
-        # sometimes it takes a few seconds for the PARTUUID to be readable
+        # Wait for PARTUUID to become readable
         sleep 1
         export LFSPARTUUID="$(lsblk -o PARTUUID $LOOP_P1 | tail -1)"
     done
+
 
     # setup root partition
     mkfs -t $LFS_FS $LOOP_P1 &> /dev/null
