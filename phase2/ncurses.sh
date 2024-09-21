@@ -18,10 +18,11 @@ popd
             --with-cxx-shared            \
             --without-debug              \
             --without-ada                \
-            --disable-stripping          \
-            --enable-widec
+            --disable-stripping
 
 make
 make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
-echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
+ln -v libncursesw.so $LFS/usr/lib/libncurses.so
+sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+    -i $LFS/usr/include/curses.h
 
