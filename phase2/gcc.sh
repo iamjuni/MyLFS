@@ -14,7 +14,8 @@ mv ${PKG_MPC%.tar*} mpc
 
 case $(uname -m) in
   x86_64)
-    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+    sed -e '/m64=/s/lib64/lib/' \
+        -i.orig gcc/config/i386/t-linux64
   ;;
 esac
 
@@ -31,13 +32,14 @@ cd build
     LDFLAGS_FOR_TARGET=-L$PWD/$LFS_TGT/libgcc      \
     --prefix=/usr                                  \
     --with-build-sysroot=$LFS                      \
-    --enable-initfini-array                        \
+    --enable-default-pie                           \
+    --enable-default-ssp                           \
     --disable-nls                                  \
     --disable-multilib                             \
-    --disable-decimal-float                        \
     --disable-libatomic                            \
     --disable-libgomp                              \
     --disable-libquadmath                          \
+    --disable-libsanitizer                         \
     --disable-libssp                               \
     --disable-libvtv                               \
     --enable-languages=c,c++
