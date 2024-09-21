@@ -233,11 +233,9 @@ function init_image {
 
     echo -n "Creating basic directory layout... "
 
-    # LFS 11.2 Section 4.2
-    mkdir -p $LFS/{etc,var}
-    mkdir -p $LFS/usr/{bin,lib,sbin}
-    for i in bin lib sbin
-    do
+    # LFS 12.2 Section 4.2
+    mkdir -p $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+    for i in bin lib sbin; do
         ln -s usr/$i $LFS/$i
     done
     case $(uname -m) in
@@ -245,27 +243,27 @@ function init_image {
     esac
     mkdir -p $LFS/tools
 
-    # LFS 11.2 Section 7.3
+    # LFS 12.2 Section 7.3
     mkdir -p $LFS/{dev,proc,sys,run}
 
-    # LFS 11.2 Section 7.5
-    mkdir -p $LFS/{boot,home,mnt,opt,srv}
-    mkdir -p $LFS/etc/{opt,sysconfig}
-    mkdir -p $LFS/lib/firmware
-    mkdir -p $LFS/media/{floppy,cdrom}
-    mkdir -p $LFS/usr/{,local/}{include,src}
-    mkdir -p $LFS/usr/local/{bin,lib,sbin}
-    mkdir -p $LFS/usr/{,local/}share/{color,dict,doc,info,locale,man}
-    mkdir -p $LFS/usr/{,local/}share/{misc,terminfo,zoneinfo}
-    mkdir -p $LFS/usr/{,local/}share/man/man{1..8}
-    mkdir -p $LFS/var/{cache,local,log,mail,opt,spool}
-    mkdir -p $LFS/var/lib/{color,misc,locate}
+    # LFS 12.2 Section 7.5
+    mkdir -p /etc/{opt,sysconfig}
+    mkdir -p /lib/firmware
+    mkdir -p /media/{floppy,cdrom}
+    mkdir -p /usr/{,local/}{include,src}
+    mkdir -p /usr/lib/locale
+    mkdir -p /usr/local/{bin,lib,sbin}
+    mkdir -p /usr/{,local/}share/{color,dict,doc,info,locale,man}
+    mkdir -p /usr/{,local/}share/{misc,terminfo,zoneinfo}
+    mkdir -p /usr/{,local/}share/man/man{1..8}
+    mkdir -p /var/{cache,local,log,mail,opt,spool}
+    mkdir -p /var/lib/{color,misc,locate}
     ln -sf /run $LFS/var/run
     ln -sf /run/lock $LFS/var/lock
     install -d -m 0750 $LFS/root
     install -d -m 1777 $LFS/tmp $LFS/var/tmp
 
-    # LFS 11.2 Section 7.6
+    # LFS 12.2 Section 7.6
     ln -s /proc/self/mounts $LFS/etc/mtab
     touch $LFS/var/log/{btmp,lastlog,faillog,wtmp}
     chgrp 13 $LFS/var/log/lastlog # 13 == utmp
@@ -305,15 +303,17 @@ function init_image {
 
     # mount stuff from the host onto the target disk
     mount --bind /dev $LFS/dev
-    mount --bind /dev/pts $LFS/dev/pts
+    mount -t devpts devpts -o gid=5,mode=0620 $LFS/dev/pts
     mount -t proc proc $LFS/proc
     mount -t sysfs sysfs $LFS/sys
     mount -t tmpfs tmpfs $LFS/run
 
     if [ -h $LFS/dev/shm ]; then
-      mkdir -p $LFS/$(readlink $LFS/dev/shm)
+      install -v -d -m 1777 $LFS$(realpath /dev/shm)
+    else
+      mount -vt tmpfs -o nosuid,nodev tmpfs $LFS/dev/shm
     fi
-
+    
     set +x
 
     trap - ERR
@@ -395,7 +395,7 @@ function mount_image {
 
     # mount stuff from the host onto the target disk
     mount --bind /dev $LFS/dev
-    mount --bind /dev/pts $LFS/dev/pts
+    mount -t devpts devpts -o gid=5,mode=0620 $LFS/dev/pts
     mount -t proc proc $LFS/proc
     mount -t sysfs sysfs $LFS/sys
     mount -t tmpfs tmpfs $LFS/run
