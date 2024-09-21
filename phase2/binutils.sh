@@ -12,10 +12,12 @@ cd build
     --enable-shared            \
     --enable-gprofng=no        \
     --disable-werror           \
-    --enable-64-bit-bfd
+    --enable-64-bit-bfd        \
+    --enable-new-dtags         \
+    --enable-default-hash-style=gnu
 
 make
 make DESTDIR=$LFS install
 
-rm $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
+rm $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
 
