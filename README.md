@@ -13,12 +13,12 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 ```
 git clone https://github.com/TheKingKerellos/MyLFS.git
 ```
-Due to github making .sh files unexecutable after making changes to it, after pulling the repository and running ./mylfs.sh (or any other .sh file) it will return;
+If ./mylfs.sh (or any other .sh file) returns;
 ```
 root@root-debian:~/MyLFS$ sudo ./mylfs.sh 
 sudo: ./mylfs.sh: command not found
 ```
-Which is why it is crucial to run:
+Run:
 ```
 cd MyLFS/
 chmod +x mylfs.sh runqemu.sh
