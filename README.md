@@ -6,8 +6,8 @@ Pronounce it in whatever way seems best to you.
 If you don't know what this is, or haven't built Linux From Scratch on your own before, you should go through the LFS [book](https://linuxfromscratch.org) before using this script.
 
 # Roadmap
-* Add support for the lfs 12.2 book
-* Clean up the source code and modularise it more
+* Add support for the lfs 12.2 book (In progress)
+* Clean up the source code and ask user for the systemd or sysvinit book before installation (not started yet)
 
 ## How to install
 ```
