@@ -13,6 +13,7 @@ flex
 tcl
 expect
 dejagnu
+pkgconfig
 binutils
 gmp
 mpfr
@@ -22,7 +23,6 @@ acl
 libcap
 shadow
 gcc
-pkgconfig
 ncurses
 sed
 psmisc
@@ -46,7 +46,9 @@ kmod
 elfutils
 libffi
 python
+flitcore
 wheel
+setuptools
 ninja
 meson
 coreutils
@@ -55,6 +57,7 @@ diffutils
 gawk
 findutils
 groff
+grub
 gzip
 iproute2
 kbd
@@ -64,7 +67,9 @@ patch
 tar
 texinfo
 vim
-eudev
+markupsafe
+jinja
+udev
 mandb
 procps
 utillinux
@@ -73,5 +78,3 @@ sysklogd
 sysvinit
 lfsbootscripts
 linux
-grub
-
