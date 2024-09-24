@@ -1,7 +1,10 @@
 # Expect Phase 4
+patch -Np1 -i ../$(basename $PATCH_EXPECT)
+
 ./configure --prefix=/usr           \
             --with-tcl=/usr/lib     \
             --enable-shared         \
+            --disable-rpath         \
             --mandir=/usr/share/man \
             --with-tclinclude=/usr/include
 
