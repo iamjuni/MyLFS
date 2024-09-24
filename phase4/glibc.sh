@@ -8,9 +8,9 @@ echo "rootsbindir=/usr/sbin" > configparms
 
 ../configure --prefix=/usr                            \
              --disable-werror                         \
-             --enable-kernel=3.2                      \
+             --enable-kernel=4.19                     \
              --enable-stack-protector=strong          \
-             --with-headers=/usr/include              \
+             --disable-nscd                           \
              libc_cv_slibdir=/usr/lib
 
 make
@@ -26,11 +26,8 @@ touch /etc/ld.so.conf
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 make install
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
-cp ../nscd/nscd.conf /etc/nscd.conf
-mkdir -p /var/cache/nscd
 
-mkdir -p /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
