@@ -15,4 +15,4 @@ fi
 make install
 
 ln -s flex /usr/bin/lex
-
+ln -s flex.1 /usr/share/man/man1/lex.1
