@@ -1,13 +1,14 @@
 # Readline Phase 4
-./configure --prefix=/usr
+sed -i '/MV.*old/d' Makefile.in
+sed -i '/{OLDSUFF}/c:' support/shlib-install
 
-make
+./configure --prefix=/usr    \
+            --disable-static \
+            --with-curses    \
+            --docdir=/usr/share/doc/readline-8.1.2
 
-if $RUN_TESTS
-then
-    set +e
-    make check
-    set -e
-fi
+make SHLIB_LIBS="-lncursesw"
+make SHLIB_LIBS="-lncursesw" install
 
-make install
+install -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-8.1.2
+
