@@ -1,8 +1,7 @@
 # Pkg-config Phase 4
 ./configure --prefix=/usr              \
-            --with-internal-glib       \
-            --disable-host-tool        \
-            --docdir=/usr/share/doc/pkg-config-0.29.2
+            --disable-static           \
+            --docdir=/usr/share/doc/pkgconf-2.3.0
 
 make
 
@@ -15,3 +14,5 @@ fi
 
 make install
 
+ln -s pkgconf   /usr/bin/pkg-config
+ln -s pkgconf.1 /usr/share/man/man1/pkg-config.1

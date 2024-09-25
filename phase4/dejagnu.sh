@@ -1,6 +1,6 @@
 # DejaGNU Phase 4
 mkdir build
-cd       build
+cd    build
 
 ../configure --prefix=/usr
 makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi
