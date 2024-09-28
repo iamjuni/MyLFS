@@ -247,17 +247,17 @@ function init_image {
     mkdir -p $LFS/{dev,proc,sys,run}
 
     # LFS 12.2 Section 7.5
-    mkdir -p /etc/{opt,sysconfig}
-    mkdir -p /lib/firmware
-    mkdir -p /media/{floppy,cdrom}
-    mkdir -p /usr/{,local/}{include,src}
-    mkdir -p /usr/lib/locale
-    mkdir -p /usr/local/{bin,lib,sbin}
-    mkdir -p /usr/{,local/}share/{color,dict,doc,info,locale,man}
-    mkdir -p /usr/{,local/}share/{misc,terminfo,zoneinfo}
-    mkdir -p /usr/{,local/}share/man/man{1..8}
-    mkdir -p /var/{cache,local,log,mail,opt,spool}
-    mkdir -p /var/lib/{color,misc,locate}
+    mkdir -p $LFS/etc/{opt,sysconfig}
+    mkdir -p $LFS/lib/firmware
+    mkdir -p $LFS/media/{floppy,cdrom}
+    mkdir -p $LFS/usr/{,local/}{include,src}
+    mkdir -p $LFS/usr/lib/locale
+    mkdir -p $LFS/usr/local/{bin,lib,sbin}
+    mkdir -p $LFS/usr/{,local/}share/{color,dict,doc,info,locale,man}
+    mkdir -p $LFS/usr/{,local/}share/{misc,terminfo,zoneinfo}
+    mkdir -p $LFS/usr/{,local/}share/man/man{1..8}
+    mkdir -p $LFS/var/{cache,local,log,mail,opt,spool}
+    mkdir -p $LFS/var/lib/{color,misc,locate}
     ln -sf /run $LFS/var/run
     ln -sf /run/lock $LFS/var/lock
     install -d -m 0750 $LFS/root
