@@ -9,6 +9,16 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 * Add support for the lfs 12.2 book (In progress)
 * Clean up the source code and ask user for the systemd or sysvinit book before installation (not started yet)
 
+## Warning ##
+
+As of 28th September, 2024 this script is not ready for use on your daily machine. 
+Ignoring this warning will result in unexpected behaviour and a bricked machine.
+You have been warned
+
+WARNING: Most of the functionality in this script requires root privilages,
+and involves the partitioning, mounting and unmounting of device files. Use at
+your own risk.
+
 ## How to install
 ```
 git clone https://github.com/TheKingKerellos/MyLFS.git
