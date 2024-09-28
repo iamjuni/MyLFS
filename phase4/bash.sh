@@ -1,8 +1,9 @@
 # Bash Phase 4
-./configure --prefix=/usr                      \
-            --docdir=/usr/share/doc/bash-5.1.16 \
-            --without-bash-malloc              \
-            --with-installed-readline
+./configure --prefix=/usr             \
+            --without-bash-malloc     \
+            --with-installed-readline \
+            bash_cv_strtold_broken=no \
+            --docdir=/usr/share/doc/bash-5.2.32
 
 make
 
@@ -10,8 +11,7 @@ make
 if $RUN_TESTS
 then
     set +e
-chown -R tester .
-su -s /usr/bin/expect tester << EOF
+su -s /usr/bin/expect tester << "EOF"
 set timeout -1
 spawn make tests
 expect eof

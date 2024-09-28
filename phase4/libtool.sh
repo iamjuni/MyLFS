@@ -6,7 +6,7 @@ make
 if $RUN_TESTS
 then
     set +e
-    make check TESTSUITEFLAGS=-j4
+    make -k check
     set -e
 fi
 

@@ -17,6 +17,5 @@ fi
 
 make install
 
-mkdir -pv           /usr/share/doc/kbd-2.5.1
-cp -R -v docs/doc/* /usr/share/doc/kbd-2.5.1
+cp -R docs/doc -T /usr/share/doc/kbd-2.6.4
 

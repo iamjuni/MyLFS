@@ -1,3 +1,5 @@
+" Begin /etc/vimrc
+
 " Ensure defaults are set before customizing settings, not after
 source $VIMRUNTIME/defaults.vim
 let skip_defaults_vim=1
@@ -10,3 +12,4 @@ if (&term == "xterm") || (&term == "putty")
   set background=dark
 endif
 
+" End /etc/vimrc

@@ -44,6 +44,7 @@ intltool
 autoconf
 automake
 openssl
+
 kmod
 elfutils
 libffi

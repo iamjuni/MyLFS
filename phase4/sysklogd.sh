@@ -1,8 +1,10 @@
 # Sysklogd Phase 4
-sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
-sed -i 's/union wait/int/' syslogd.c
+./configure --prefix=/usr      \
+            --sysconfdir=/etc  \
+            --runstatedir=/run \
+            --without-logger
 
 make
 
-make BINDIR=/sbin install
+make install
 

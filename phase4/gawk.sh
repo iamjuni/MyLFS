@@ -8,12 +8,16 @@ make
 if $RUN_TESTS
 then
     set +e
-    make check
+    chown -R tester .
+    su tester -c "PATH=$PATH make check"
     set -e
 fi
 
+rm -f /usr/bin/gawk-5.3.0
 make install
 
-mkdir -p /usr/share/doc/gawk-5.1.1
-cp doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-5.1.1
+ln -s gawk.1 /usr/share/man/man1/awk.1
+
+mkdir -p                                   /usr/share/doc/gawk-5.3.0
+cp      doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-5.3.0
 

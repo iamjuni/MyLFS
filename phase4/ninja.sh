@@ -21,4 +21,3 @@ fi
 install -m755 ninja /usr/bin/
 install -Dm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
 install -Dm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja
-

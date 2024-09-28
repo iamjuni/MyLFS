@@ -12,11 +12,11 @@ if $RUN_TESTS
 then
     set +e
     make NON_ROOT_USERNAME=tester check-root
-    echo "dummy:x:102:tester" >> /etc/group
-    chown -R tester . 
-    su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"
-    sed -i '/dummy/d' /etc/group
-    set -e
+    groupadd -g 102 dummy -U tester
+    chown -R tester .  
+    su tester -c "PATH=$PATH make -k RUN_EXPENSIVE_TESTS=yes check" \
+   < /dev/null
+    groupdel dummy
 fi
 
 make install
