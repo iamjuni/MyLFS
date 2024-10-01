@@ -22,7 +22,7 @@ popd
 
 make
 make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
-ln -v libncursesw.so $LFS/usr/lib/libncurses.so
+ln -s libncursesw.so $LFS/usr/lib/libncurses.so
 sed -e 's/^#if.*XOPEN.*$/#if 1/' \
     -i $LFS/usr/include/curses.h
 
