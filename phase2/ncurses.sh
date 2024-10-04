@@ -3,9 +3,9 @@ sed -i s/mawk// configure
 
 mkdir build
 pushd build
-../configure
-make -C include
-make -C progs tic
+  ../configure
+  make -C include
+  make -C progs tic
 popd
 
 ./configure --prefix=/usr                \
