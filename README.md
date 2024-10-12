@@ -7,7 +7,8 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 
 # Roadmap
 * Add support for the lfs 12.2 book (In progress)
-* Clean up the source code and ask user for the systemd or sysvinit book before installation (not started yet)
+* Clean up the source code and move critical directory making functions out of mylfs.sh into a new folder (started on branch called major-rewrite)
+* Ask user for the systemd or sysvinit book before installation (not started yet)
 * Create a python script which asks user for http/https Linux from scratch book , extracts commands and self sustains bash scripts, build orders, packages, patches and static files. (Started but development is stale, dont expect an ETA)
 
 ## Warning ##
