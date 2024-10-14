@@ -1,4 +1,6 @@
 # Perl Phase 3
+localedef -i C -f UTF-8 C.UTF-8
+
 sh Configure -des                                         \
              -D prefix=/usr                               \
              -D vendorprefix=/usr                         \
