@@ -67,6 +67,12 @@ on the device you specify.
         -n|--install            Specify the path to a block device on which to install the
                                 fully built img file.
 
+        --chroot                Enters the chroot environment within the LFS build.
+                                This enables you to run build steps within a chrooted 
+                                environment, providing an independant setup for your 
+                                LFS build process. It configures necessary environment variables, 
+                                enters the chroot and configures the shell prompt.            
+
         -c|--clean              This will unmount and delete the image, and clear the
                                 logs.
 
@@ -860,6 +866,7 @@ FOUNDSTARTPKG=false
 FOUNDSTARTPHASE=false
 MOUNT=false
 UNMOUNT=false
+CHROOT=false
 CLEAN=false
 
 while [ $# -gt 0 ]; do
@@ -929,6 +936,10 @@ while [ $# -gt 0 ]; do
       shift
       shift
       ;;
+    --chroot)
+      CHROOT=true
+      shift
+      ;;
     -c|--clean)
       CLEAN=true
       shift
@@ -946,7 +957,7 @@ while [ $# -gt 0 ]; do
 done
 
 OPCOUNT=0
-for OP in BUILDALL CHECKDEPS DOWNLOAD INIT STARTPHASE MOUNT UNMOUNT INSTALL_TGT CLEAN
+for OP in BUILDALL CHECKDEPS DOWNLOAD INIT STARTPHASE MOUNT UNMOUNT INSTALL_TGT CHROOT CLEAN
 do
     OP="${!OP}"
     if [ -n "$OP" -a "$OP" != "false" ]
@@ -1005,6 +1016,35 @@ then
 
     # get full path to extension
     EXTENSION="$(cd $(dirname $EXTENSION) && pwd)/$(basename $EXTENSION)"
+    fi
+
+if $CHROOT
+then
+    # Run mylfs script with sudo
+    sudo ./mylfs.sh -m
+
+    # Assign the output of 'pwd' command to the LFS variable
+    # Export the LFS variable
+    export LFS=$(pwd)/mnt/lfs
+
+    # Function to run umount command after chroot exit
+    run_umount() {
+      sudo ./mylfs.sh -u
+    }
+
+    # Trap the EXIT signal and execute the run_umount function
+    trap run_umount EXIT
+
+    # Enter chroot environment
+    sudo chroot "$LFS" /usr/bin/env -i   \
+        HOME=/root                  \
+        TERM="$TERM"                \
+        PS1='(lfs chroot) \u:\w\$ ' \
+        PATH=/usr/bin:/usr/sbin     \
+        MAKEFLAGS="-j$(nproc)"      \
+        TESTSUITEFLAGS="-j$(nproc)" \
+        /bin/bash --login
+
 fi
 
 # ###########
