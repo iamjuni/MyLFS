@@ -189,3 +189,7 @@ This will unmount the IMG file (if it is mounted), delete it, and delete the log
 
 ## Booting
 So far, I have managed to boot the IMG file using QEMU (see the [runqemu.sh](runqemu.sh) script) and on bare metal using a flash drive. I have not been able to boot it up on a VM yet.
+
+## Special thanks
+* @[krglaws](https://github.com/krglaws) For creating the parent repository which allowed for this fork!
+* @[Techlm77](https://github.com/Techlm77) Gave me permission, and most importantly, in mylfs.sh he had a really nice --chroot function which is usefull
