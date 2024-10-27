@@ -78,6 +78,7 @@ export PKG_TCLDOCS=https://downloads.sourceforge.net/tcl/tcl8.6.14-html.tar.gz
 export PKG_TEXINFO=https://ftp.gnu.org/gnu/texinfo/texinfo-7.1.tar.xz
 export PKG_TZDATA=https://www.iana.org/time-zones/repository/releases/tzdata2024a.tar.gz
 export PKG_UDEVLFS=https://anduin.linuxfromscratch.org/LFS/udev-lfs-20230818.tar.xz
+export PKG_UDEVFROMSYSD=https://github.com/systemd/systemd/archive/v256.4/systemd-256.4.tar.gz
 export PKG_UTILLINUX=https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-2.40.2.tar.xz
 export PKG_VIM=https://github.com/vim/vim/archive/v9.1.0660/vim-9.1.0660.tar.gz
 export PKG_WHEEL=https://pypi.org/packages/source/w/wheel/wheel-0.44.0.tar.gz

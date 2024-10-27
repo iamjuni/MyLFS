@@ -71,7 +71,7 @@ texinfo
 vim
 markupsafe
 jinja
-udev
+udevfromsysd
 mandb
 procps
 utillinux
