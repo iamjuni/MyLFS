@@ -22,6 +22,5 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-$KERNELVERS-lfs-$LFS_VERSION
 
 cp System.map /boot/System.map-$KERNELVERS
 
-install -d /usr/share/doc/linux-$KERNELVERS
 cp -r Documentation/* /usr/share/doc/linux-$KERNELVERS
 
