@@ -194,7 +194,7 @@ The reason why it isn't bootable through a VM is due to the PARTUUID (run `blkid
 setparams "GNU/Linux, Linux 6.10.4-lfs-12.2" {
   set root=(hd0,msdos1)
   search --no-floppy --label LFSROOT --set=root
-  linux   /boot/vmlinuz-6.10.4-lfs-1.2 rootwait root=/dev/sda1 ro
+  linux   /boot/vmlinuz-6.10.4-lfs-12.2 rootwait root=/dev/sda1 ro
 }
 ```
 You should be able to go to the command line in grub and write `ls` to find out what your drive is, and for your partition, whatever you pass onto --install, e.g /dev/sda , /dev/sdb , write 1 directly after it just like the example and you should be good to go.
