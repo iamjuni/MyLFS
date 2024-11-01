@@ -187,8 +187,18 @@ sudo ./mylfs.sh --clean
 This will unmount the IMG file (if it is mounted), delete it, and delete the logs under `./logs/`. It will not delete the cached package archives under `./packages/`, but if you really want to do that you can easily `rm -f ./packages/*`.  
 
 
-## Booting
-So far, I have managed to boot the IMG file using QEMU (see the [runqemu.sh](runqemu.sh) script) and on bare metal using a flash drive. I have not been able to boot it up on a VM yet.
+## Issues Booting
+So far, the image is bootable using QEMU (see the [runqemu.sh](runqemu.sh) script) or on bare metal using a flash drive. I have not been able to boot it up on a VM yet.
+The reason why it isn't bootable through a VM is due to the PARTUUID (run `blkid` on any linux system to see what it looks like) not being substituted to [boot/grub/grub.cfg](templates/boot__grub__grub.cfg) onto the newly installed drive. This is, I assume, due to the kernel not recognising the newly wiped and created drive so substituting the PARTUUID fails (as it is empty) and you are left with the "Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)" error. The only real solution for you is to pass on the --install flag and run install your fully built lfs as usual, but when you boot into the new GRUB bootloader, pass set root=(hdx,y) and root=/dev/<xxx> like below,
+```
+setparams "GNU/Linux, Linux 6.10.4-lfs-12.2" {
+  set root=(hd0,msdos1)
+  search --no-floppy --label LFSROOT --set=root
+  linux   /boot/vmlinuz-6.10.4-lfs-1.2 rootwait root=/dev/sda1 ro
+}
+```
+You should be able to go to the command line in grub and write `ls` to find out what your drive is, and for your partition, whatever you pass onto --install, e.g /dev/sda , /dev/sdb , write 1 directly after it just like the example and you should be good to go.
+The reason why this script uses PARTUUID is because they have the advantage that they don't change if your reformat the partition with another filesystem versus /dev/sda and UUIDs, but I am experimenting with substituting hdx,y and /dev/<xxx> for the sake of booting. If you have the skills, I am asking for some help the install_image function to work with PARTUUIDs and make booting LFS efortless.
 
 ## Special thanks
 * @[krglaws](https://github.com/krglaws) For creating the parent repository which allowed for this fork!
