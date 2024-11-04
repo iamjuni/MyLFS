@@ -13,13 +13,8 @@ If you don't know what this is, or haven't built Linux From Scratch on your own 
 
 ## Warning ##
 
-As of 28th September, 2024 this script is not ready for use on your daily machine. 
-Ignoring this warning will result in unexpected behaviour and a bricked machine.
-You have been warned
-
-WARNING: Most of the functionality in this script requires root privilages,
-and involves the partitioning, mounting and unmounting of device files. Use at
-your own risk.
+It is not recommended to run this script on your daily machine (although, in essence, all it does is mount a .IMG file and build the LFS system in it). By ignoring this, you agree that some commands in this shell file can completely destroy your system with no chance of recovery! 
+BE WARNED
 
 ## How to install
 ```
