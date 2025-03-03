@@ -10,3 +10,4 @@ export PKG_APACHE=https://archive.apache.org/dist/httpd/httpd-2.4.62.tar.bz2
 export PATCH_APACHE=https://www.linuxfromscratch.org/patches/blfs/12.2/httpd-2.4.62-blfs_layout-1.patch
 export PKG_APR=https://archive.apache.org/dist/apr/apr-1.7.4.tar.bz2
 export PKG_APR-UTIL=https://archive.apache.org/dist/apr/apr-util-1.6.3.tar.bz2
+export PKG_PCRE2=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2
