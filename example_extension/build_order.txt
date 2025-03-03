@@ -7,4 +7,7 @@ p11kit
 makeca_certs MAKECA
 curl
 lynx
-
+apr
+apr-util
+pcre2
+apache
