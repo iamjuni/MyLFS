@@ -8,3 +8,4 @@ export PKG_MAKECA=https://github.com/lfs-book/make-ca/archive/v1.14/make-ca-1.14
 export PKG_CURL=https://curl.se/download/curl-8.9.1.tar.xz
 export PKG_APACHE=https://archive.apache.org/dist/httpd/httpd-2.4.62.tar.bz2
 export PATCH_APACHE=https://www.linuxfromscratch.org/patches/blfs/12.2/httpd-2.4.62-blfs_layout-1.patch
+export PKG_APR=https://archive.apache.org/dist/apr/apr-1.7.4.tar.bz2
